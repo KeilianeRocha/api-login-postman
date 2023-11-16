@@ -1,0 +1,477 @@
+{
+	"info": {
+		"_postman_id": "5aea033e-2ebf-4a33-964e-707dd1800e5a",
+		"name": "Login API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30727541"
+	},
+	"item": [
+		{
+			"name": "1_Signup",
+			"item": [
+				{
+					"name": "signup - success",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//console.log(\"faça isso antes da requisição\")\r",
+									"// FORMA MAIS COMPLEXA DE FAZER A MASSA DE DADOS PARA VARIAVEIS\r",
+									"\r",
+									"// CRIEI UMA FUNÇÃO 'FIRSTNAME'. DECLAREI A VARIÁVEL 'FIRSTNAME' QUE RECEBE UM ARRAY COM VÁRIOS NOMES.\r",
+									"function firstName(){ \r",
+									"\r",
+									"    let firstName = [\"Luana\", \"Alice\",  \"Julia\", \"Isabelle\", \"Sophie\", \"Isadora\", \"Luzia\", \"Bianca\", \"Lucca\", \"Filipe\", \"Fernando\", \"Bento\", \"Lorenzo\", \"Ayla\", \"Marlene\", \"Rosa\", \"Manuela\", \"Antônia\", \"Heloisa\", \"Emilly\", \"Nicole\", \"Hadassa\", \"Melissa\", \"Bruna\", \"Elza\", \"Betina\", \"Analu\", \"Bárbara\", \"Raul\", \"Yuri\", \"Márcio\", \"Enrico\", \"Levi\", \"Mateus\", \"Melissa\", \"Renata\", \"Manuela\", \"Elias\", \"Bruno\", \"Mário\", \"Enzo\", \"Osvaldo\"];\r",
+									"// DECLAREI A VARIÁVEL 'RANDOMITEM' QUE RECEBE UM ITEM ALEATÓRIO DO ARRAY 'FIRSTNAME'.\r",
+									"    let randomItem = firstName[Math.floor(Math.random() * firstName.length)];  \r",
+									"// RETORNA O NOME ALEATÓRIO SELECIONADO.\r",
+									"    return randomItem \r",
+									"}\r",
+									"// A LINHA ABAIXO UTILIZA O POSTMAN PARA DEFINIR A VARIÁVEL DE AMBIENTE 'FirstName' COM O RESULTADO DA FUNÇÃO 'firstName()'.\r",
+									"pm.environment.set(\"FirstName\", firstName()); \r",
+									"\r",
+									"function lastName(){\r",
+									"\r",
+									"    let lastName = [\r",
+									"    \"Drumond\", \"de Lima\", \"do Nascimento\", \"da Silva\", \"de Sousa\", \"da Costa\", \"Almeida\", \"Barros\",\r",
+									"    \"Rezende\", \"da Rocha\", \"Pires\", \"Brito\", \"Batista\", \"Alves\", \"Assunção\", \"Monteiro\", \"Neves\",\r",
+									"    \"Ferreira\", \"Barbosa\", \"Duarte\", \"Castro\", \"Bernardes\", \"Vieira\", \"de Oliveira\", \"Carvalho\",\r",
+									"    \"Lopes\", \"de Moaraes\", \"Pinto\", \"Cardoso\", \"Sales\", \"de Assis\", \"da Luz\", \"Nunes\", \"Cabral\",\r",
+									"    \"Fonseca\", \"Silveira\", \"Matta\", \"Romão\", \"Schmidt\", \"Possamai\", \"Maia\", \"Picon\"\r",
+									"];\r",
+									"// Remover espaços extras em cada sobrenome no array 'lastName'\r",
+									"for (let i = 0; i < lastName.length; i++) {\r",
+									"    lastName[i] = lastName[i].trim();\r",
+									"}\r",
+									"\r",
+									"    let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"    return randomItem\r",
+									"}\r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"// AQUI, ESTOU PEDINDO AO POSTMAN PARA DEFINIR UMA VARIÁVEL NO AMBIENTE CHAMADA 'FullName'.\r",
+									"// PARA ISSO, ESTOU CONCATENANDO O VALOR DA VARIÁVEL 'FirstName' COM O VALOR DA VARIÁVEL 'LastName'.\r",
+									"// AMBOS OS VALORES SÃO OBTIDOS DO AMBIENTE USANDO 'pm.environment.get()'.\r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function accessProfile(){\r",
+									"\r",
+									"    let accessProfile = [\"ADMIN\", \" FINANCEIRO\",  \" ADMINISTRATIVO\", \" TI\", \"CONTROLADORIA\", \"STUDENT\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									"    return randomItem\r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									"\r",
+									"function providerMail(){\r",
+									"\r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\", \"@outlook.com\", \"@test.com.br\", \"@qacoders.com.br\", \"@oul.com.br\", \"@chips.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									"    return randomItem\r",
+									"}\r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"\r",
+									"// AQUI, ESTOU PEDINDO AO POSTMAN PARA DEFINIR UMA VARIÁVEL NO AMBIENTE CHAMADA 'Email'.\r",
+									"// ESTOU CONCATENANDO O VALOR DA VARIÁVEL 'FirstName' COM UM GUID GERADO PELO POSTMAN (USANDO 'pm.variables.replaceIn('{{ $guid }}')').\r",
+									"// EM SEGUIDA, CONCATENO O VALOR DA VARIÁVEL 'ProviderMail' AO FINAL\r",
+									"pm.environment.set(\"Email\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') +  pm.\r",
+									"//está concatenando o valor de \"FirstName\" com um GUID gerado pelo Postman \r",
+									"environment.get(\"ProviderMail\"))\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//console.log(\"FACA AQUI DEPOIS QUE ENVIAR A REQUISIÇÃO\")\r",
+									"// Aqui, estou usando o Postman para realizar um teste.\r",
+									"// Este teste verifica se o código de status (status HTTP) da resposta de uma requisição é 200 (OK).\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Aqui, estamos utilizando o Postman para realizar um teste.\r",
+									"// Este teste verifica se um token existe na resposta da requisição.\r",
+									"pm.test(\"Check is token exist\", function () {\r",
+									"    //pm.expect() para verificar se o token na resposta da requisição existe.\r",
+									"    pm.expect(JSON.parse(responseBody).token).to.exist;\r",
+									"    //(responseBody) assumindo que o corpo da resposta é um JSON\r",
+									"});\r",
+									"\r",
+									"// Obtém o valor esperado da variável de ambiente 'FullName'\r",
+									"pm.test(\"Check is fullName true\", function(){\r",
+									"    //expectedFullName: Obtém o valor esperado da variável de ambiente 'FullName'.\r",
+									"    const expectedFullName = pm.environment.get(\"FullName\");\r",
+									"    //responseBodyFullName: Obtém o nome completo da resposta responseBody' e remove espaços extras com trim()\r",
+									"    const responseBodyFullName = JSON.parse(responseBody).user.fullName.trim();\r",
+									"\r",
+									"    // Compara os valores do nome completo da resposta com o valor esperado da variável de ambiente,\r",
+									"    // após remover os espaços extras com 'trim()', para verificar se são iguais\r",
+									"    pm.expect(responseBodyFullName).to.eql(expectedFullName.trim());\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check is mail true\", function(){\r",
+									"    pm.expect(pm.environment.get(\"Email\")).to.eql(JSON.parse(responseBody).user.mail);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check is accessProfile true\", function(){\r",
+									"    pm.expect(true).to.eql(JSON.parse(responseBody).user.status);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check is status true\", function(){\r",
+									"    pm.expect(true).to.eql(JSON.parse(responseBody).user.status);\r",
+									"})\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"{{FullName}} \",\r\n    \"mail\": \"{{Email}}\",\r\n    \"password\": \"{{Password}}\",\r\n    \"confirmPassword\": \"{{Password}}\",\r\n    \"accessProfile\": \"{{AccessProfile}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlbase}}/signup",
+							"host": [
+								"{{urlbase}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup - fullName is required",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//console.log(\"faça isso antes da requisição\")\r",
+									"// FORMA MAIS COMPLEXA DE FAZER A MASSA DE DADOS PARA VARIAVEIS\r",
+									"\r",
+									"function providerMail(){\r",
+									"\r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\", \"@outlook.com\", \"@test.com.br\", \"@qacoders.com.br\", \"@oul.com.br\", \"@chips.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									"    return randomItem\r",
+									"}\r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"\r",
+									"// AQUI, ESTOU PEDINDO AO POSTMAN PARA DEFINIR UMA VARIÁVEL NO AMBIENTE CHAMADA 'Email'.\r",
+									"// ESTOU CONCATENANDO O VALOR DA VARIÁVEL 'FirstName' COM UM GUID GERADO PELO POSTMAN (USANDO 'pm.variables.replaceIn('{{ $guid }}')').\r",
+									"// EM SEGUIDA, CONCATENO O VALOR DA VARIÁVEL 'ProviderMail' AO FINAL\r",
+									"pm.environment.set(\"Email\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') +  pm.\r",
+									"//está concatenando o valor de \"FirstName\" com um GUID gerado pelo Postman \r",
+									"environment.get(\"ProviderMail\"))\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//console.log(\"FACA AQUI DEPOIS QUE ENVIAR A REQUISIÇÃO\")\r",
+									"// Aqui, estou usando o Postman para realizar um teste.\r",
+									"// Este teste verifica se o código de status (status HTTP) da resposta de uma requisição é 200 (OK).\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"// Obtém o valor esperado da variável de ambiente 'FullName'\r",
+									"pm.test(\"Check is msg: O campo 'fullName' é obrigatório.\", function(){\r",
+									"    pm.expect(pm.globals.get(\"MsgFullNameRequerid\")).to.eql(JSON.parse\r",
+									"    (responseBody).errors[0])\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"\",\r\n    \"mail\": \"{{Email}}\",\r\n    \"password\": \"{{Password}}\",\r\n    \"confirmPassword\": \"{{Password}}\",\r\n    \"accessProfile\": \"{{AccessProfile}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlbase}}/signup",
+							"host": [
+								"{{urlbase}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2_Login",
+			"item": [
+				{
+					"name": "signup - success",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//console.log(\"faça isso antes da requisição\")\r",
+									"// FORMA MAIS COMPLEXA DE FAZER A MASSA DE DADOS PARA VARIAVEIS\r",
+									"\r",
+									"// CRIEI UMA FUNÇÃO 'FIRSTNAME'. DECLAREI A VARIÁVEL 'FIRSTNAME' QUE RECEBE UM ARRAY COM VÁRIOS NOMES.\r",
+									"function firstName(){ \r",
+									"\r",
+									"    let firstName = [\"Luana\", \"Alice\",  \"Julia\", \"Isabelle\", \"Sophie\", \"Isadora\", \"Luzia\", \"Bianca\", \"Lucca\", \"Filipe\", \"Fernando\", \"Bento\", \"Lorenzo\", \"Ayla\", \"Marlene\", \"Rosa\", \"Manuela\", \"Antônia\", \"Heloisa\", \"Emilly\", \"Nicole\", \"Hadassa\", \"Melissa\", \"Bruna\", \"Elza\", \"Betina\", \"Analu\", \"Bárbara\", \"Raul\", \"Yuri\", \"Márcio\", \"Enrico\", \"Levi\", \"Mateus\", \"Melissa\", \"Renata\", \"Manuela\", \"Elias\", \"Bruno\", \"Mário\", \"Enzo\", \"Osvaldo\"];\r",
+									"// DECLAREI A VARIÁVEL 'RANDOMITEM' QUE RECEBE UM ITEM ALEATÓRIO DO ARRAY 'FIRSTNAME'.\r",
+									"    let randomItem = firstName[Math.floor(Math.random() * firstName.length)];  \r",
+									"// RETORNA O NOME ALEATÓRIO SELECIONADO.\r",
+									"    return randomItem \r",
+									"}\r",
+									"// A LINHA ABAIXO UTILIZA O POSTMAN PARA DEFINIR A VARIÁVEL DE AMBIENTE 'FirstName' COM O RESULTADO DA FUNÇÃO 'firstName()'.\r",
+									"pm.environment.set(\"FirstName\", firstName()); \r",
+									"\r",
+									"function lastName(){\r",
+									"\r",
+									"    let lastName = [\r",
+									"    \"Drumond\", \"de Lima\", \"do Nascimento\", \"da Silva\", \"de Sousa\", \"da Costa\", \"Almeida\", \"Barros\",\r",
+									"    \"Rezende\", \"da Rocha\", \"Pires\", \"Brito\", \"Batista\", \"Alves\", \"Assunção\", \"Monteiro\", \"Neves\",\r",
+									"    \"Ferreira\", \"Barbosa\", \"Duarte\", \"Castro\", \"Bernardes\", \"Vieira\", \"de Oliveira\", \"Carvalho\",\r",
+									"    \"Lopes\", \"de Moaraes\", \"Pinto\", \"Cardoso\", \"Sales\", \"de Assis\", \"da Luz\", \"Nunes\", \"Cabral\",\r",
+									"    \"Fonseca\", \"Silveira\", \"Matta\", \"Romão\", \"Schmidt\", \"Possamai\", \"Maia\", \"Picon\"\r",
+									"];\r",
+									"// Remover espaços extras em cada sobrenome no array 'lastName'\r",
+									"for (let i = 0; i < lastName.length; i++) {\r",
+									"    lastName[i] = lastName[i].trim();\r",
+									"}\r",
+									"\r",
+									"    let randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+									"    return randomItem\r",
+									"}\r",
+									"pm.environment.set(\"LastName\", lastName());\r",
+									"\r",
+									"// AQUI, ESTOU PEDINDO AO POSTMAN PARA DEFINIR UMA VARIÁVEL NO AMBIENTE CHAMADA 'FullName'.\r",
+									"// PARA ISSO, ESTOU CONCATENANDO O VALOR DA VARIÁVEL 'FirstName' COM O VALOR DA VARIÁVEL 'LastName'.\r",
+									"// AMBOS OS VALORES SÃO OBTIDOS DO AMBIENTE USANDO 'pm.environment.get()'.\r",
+									"pm.environment.set(\"FullName\", pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"));\r",
+									"\r",
+									"function accessProfile(){\r",
+									"\r",
+									"    let accessProfile = [\"ADMIN\", \" FINANCEIRO\",  \" ADMINISTRATIVO\", \" TI\", \"CONTROLADORIA\", \"STUDENT\"];\r",
+									"    let randomItem = accessProfile[Math.floor(Math.random() * accessProfile.length)];\r",
+									"    return randomItem\r",
+									"}\r",
+									"pm.environment.set(\"AccessProfile\", accessProfile());\r",
+									"\r",
+									"function providerMail(){\r",
+									"\r",
+									"    let providerMail = [\"@yahoo.com.br\", \"@gmail.com\", \"@outlook.com\", \"@test.com.br\", \"@qacoders.com.br\", \"@oul.com.br\", \"@chips.com.br\"];\r",
+									"    let randomItem = providerMail[Math.floor(Math.random() * providerMail.length)];\r",
+									"    return randomItem\r",
+									"}\r",
+									"pm.environment.set(\"ProviderMail\", providerMail());\r",
+									"\r",
+									"// AQUI, ESTOU PEDINDO AO POSTMAN PARA DEFINIR UMA VARIÁVEL NO AMBIENTE CHAMADA 'Email'.\r",
+									"// ESTOU CONCATENANDO O VALOR DA VARIÁVEL 'FirstName' COM UM GUID GERADO PELO POSTMAN (USANDO 'pm.variables.replaceIn('{{ $guid }}')').\r",
+									"// EM SEGUIDA, CONCATENO O VALOR DA VARIÁVEL 'ProviderMail' AO FINAL\r",
+									"pm.environment.set(\"Email\", pm.environment.get(\"FirstName\") + \"_\" + pm.variables.replaceIn('{{$guid}}') +  pm.\r",
+									"//está concatenando o valor de \"FirstName\" com um GUID gerado pelo Postman \r",
+									"environment.get(\"ProviderMail\"))\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//console.log(\"FACA AQUI DEPOIS QUE ENVIAR A REQUISIÇÃO\")\r",
+									"// Aqui, estou usando o Postman para realizar um teste.\r",
+									"// Este teste verifica se o código de status (status HTTP) da resposta de uma requisição é 200 (OK).\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Aqui, estamos utilizando o Postman para realizar um teste.\r",
+									"// Este teste verifica se um token existe na resposta da requisição.\r",
+									"pm.test(\"Check is token exist\", function () {\r",
+									"    //pm.expect() para verificar se o token na resposta da requisição existe.\r",
+									"    pm.expect(JSON.parse(responseBody).token).to.exist;\r",
+									"    //(responseBody) assumindo que o corpo da resposta é um JSON\r",
+									"});\r",
+									"\r",
+									"// Obtém o valor esperado da variável de ambiente 'FullName'\r",
+									"pm.test(\"Check is fullName true\", function(){\r",
+									"    //expectedFullName: Obtém o valor esperado da variável de ambiente 'FullName'.\r",
+									"    const expectedFullName = pm.environment.get(\"FullName\");\r",
+									"    //responseBodyFullName: Obtém o nome completo da resposta responseBody' e remove espaços extras com trim()\r",
+									"    const responseBodyFullName = JSON.parse(responseBody).user.fullName.trim();\r",
+									"\r",
+									"    // Compara os valores do nome completo da resposta com o valor esperado da variável de ambiente,\r",
+									"    // após remover os espaços extras com 'trim()', para verificar se são iguais\r",
+									"    pm.expect(responseBodyFullName).to.eql(expectedFullName.trim());\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check is mail true\", function(){\r",
+									"    pm.expect(pm.environment.get(\"Email\")).to.eql(JSON.parse(responseBody).user.mail);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check is accessProfile true\", function(){\r",
+									"    pm.expect(true).to.eql(JSON.parse(responseBody).user.status);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check is status true\", function(){\r",
+									"    pm.expect(true).to.eql(JSON.parse(responseBody).user.status);\r",
+									"})\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"{{FullName}} \",\r\n    \"mail\": \"{{Email}}\",\r\n    \"password\": \"{{Password}}\",\r\n    \"confirmPassword\": \"{{Password}}\",\r\n    \"accessProfile\": \"{{AccessProfile}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlbase}}/signup",
+							"host": [
+								"{{urlbase}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login - success",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//console.log(\"faça isso antes da requisição\")\r",
+									"// FORMA MAIS COMPLEXA DE FAZER A MASSA DE DADOS PARA VARIAVEIS\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//console.log(\"FACA AQUI DEPOIS QUE ENVIAR A REQUISIÇÃO\")\r",
+									"// Aqui, estou usando o Postman para realizar um teste.\r",
+									"// Este teste verifica se o código de status (status HTTP) da resposta de uma requisição é 200 (OK).\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Aqui, estamos utilizando o Postman para realizar um teste.\r",
+									"// Este teste verifica se um token existe na resposta da requisição.\r",
+									"pm.test(\"Check is token exist\", function () {\r",
+									"    //pm.expect() para verificar se o token na resposta da requisição existe.\r",
+									"    pm.expect(JSON.parse(responseBody).token).to.exist;\r",
+									"    //(responseBody) assumindo que o corpo da resposta é um JSON\r",
+									"});\r",
+									"\r",
+									"// Obtém o valor esperado da variável de ambiente 'FullName'\r",
+									"pm.test(\"Check is fullName true\", function(){\r",
+									"    //expectedFullName: Obtém o valor esperado da variável de ambiente 'FullName'.\r",
+									"    const expectedFullName = pm.environment.get(\"FullName\");\r",
+									"    //responseBodyFullName: Obtém o nome completo da resposta responseBody' e remove espaços extras com trim()\r",
+									"    const responseBodyFullName = JSON.parse(responseBody).user.fullName.trim();\r",
+									"\r",
+									"    // Compara os valores do nome completo da resposta com o valor esperado da variável de ambiente,\r",
+									"    // após remover os espaços extras com 'trim()', para verificar se são iguais\r",
+									"    pm.expect(responseBodyFullName).to.eql(expectedFullName.trim());\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check is mail true\", function(){\r",
+									"    pm.expect(pm.environment.get(\"Email\")).to.eql(JSON.parse(responseBody).user.mail);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check is accessProfile true\", function(){\r",
+									"    pm.expect(true).to.eql(JSON.parse(responseBody).user.status);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check is status true\", function(){\r",
+									"    pm.expect(true).to.eql(JSON.parse(responseBody).user.status);\r",
+									"})\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\": \"{{Email}}\",\r\n    \"password\": \"{{Password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlbase}}/login",
+							"host": [
+								"{{urlbase}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

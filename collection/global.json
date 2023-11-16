@@ -1,0 +1,21 @@
+{
+	"id": "bb900c77-9104-419c-8a04-9b6a71bfe2ca",
+	"values": [
+		{
+			"key": "Password",
+			"value": "1234@Test",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "MsgFullNameRequerid",
+			"value": "O campo 'fullName' é obrigatório.",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2023-11-16T00:46:00.159Z",
+	"_postman_exported_using": "Postman/10.20.0"
+}
