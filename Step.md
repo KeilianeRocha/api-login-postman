@@ -1,12 +1,14 @@
-# Api_ Login
+<h1 align="center"> API Login </h1>
+<p align="right">
 
-## Criado: 23 de janeiro de 2024 10:50
-Aula: Qa.Coders Academy
+#### Criado: 23 de janeiro de 2024 10:50
+ Aula: Qa.Coders Academy
 Tipo: Tutorial
 
 [Postman.com/docs:](https://learning.postman.com/docs/introduction/overview/)
 
-Status: Em andamento
+<img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=EM%20ANDAMENTO"/>
+</p>
 
 # Aqui estão os passos que fiz pra criar esse teste de API no Postman
 
@@ -102,4 +104,4 @@ console.log(Json.parse(responseBody).token)
 - Validei a lógica, usando o ´RUNNER´, teste de execução de massa
 - Coloquei a msg ´FullName´ no environment ´GLOBAL´
 
-  >Parei em variavel de ambiente ...
+  
