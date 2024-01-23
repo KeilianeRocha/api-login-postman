@@ -1,11 +1,11 @@
 # Api_ Login
 
-Criado: 23 de janeiro de 2024 10:50
+## Criado: 23 de janeiro de 2024 10:50
 Aula: Qa.Coders Academy
 Tipo: Tutorial
-Materiais: https://learning.postman.com/docs/introduction/overview/
-ID: 1
-Repositório GitHub: https://github.com/KeilianeRocha/api-login-postman.git
+
+[Postman.com/docs:](https://learning.postman.com/docs/introduction/overview/)
+
 Status: Em andamento
 
 # Aqui estão os passos que fiz pra criar esse teste de API no Postman
@@ -102,4 +102,4 @@ console.log(Json.parse(responseBody).token)
 - Validei a lógica, usando o ´RUNNER´, teste de execução de massa
 - Coloquei a msg ´FullName´ no environment ´GLOBAL´
 
-- Parei em variavel de ambiebnte
+  >Parei em variavel de ambiente ...
